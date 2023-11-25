@@ -4,6 +4,33 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <Title>StarterDotNet Identity</Title>
+    <Version>0.1.0</Version>
+    <Authors>KempDec</Authors>
+    <Company>KempDec Brasil Ltda.</Company>
+    <Product>StarterDotNet Identity</Product>
+    <Description>StarterDotNet é uma biblioteca que fornece utilitários para projetos .NET.</Description>
+    <Copyright>2023 © KempDec Brasil Ltda.</Copyright>
+    <PackageProjectUrl>https://github.com/kempdec/StarterDotNet</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/kempdec/StarterDotNet</RepositoryUrl>
+    <RepositoryType>GIT</RepositoryType>
+    <PackageTags>c-sharp;utilities;dotnet;utils</PackageTags>
+    <PackageOutputPath>..\..\published</PackageOutputPath>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
