@@ -21,6 +21,7 @@
     <PackageOutputPath>..\..\published</PackageOutputPath>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RootNamespace>KempDec.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+    <AssemblyName>KempDec.$(MSBuildProjectName)</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
