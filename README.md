@@ -23,9 +23,9 @@ if (!result.Suceeded)
 {
     // Neste caso os erros de nome de usuário terão o nome da propriedade como "Email".
     // 
-    // As propriedades já tem nomes definidos por padrão que são comumente usados, como os erros de e-mail, que terão
-    // o nome da propriedade como "Email" a menos que você mude, assim como acontece abaixo com os erros de nome de
-    // usuário.
+    // As propriedades já tem nomes definidos por padrão que são comumente usados, como os erros de e-mail,
+    // que terão o nome da propriedade como "Email" a menos que você mude, assim como acontece abaixo com os
+    // erros de nome de usuário.
     var propertyNames = new IdentityErrorPropertiesName(username: nameof(_input.Email));
 
     foreach (IdentityError error in result.Errors)
