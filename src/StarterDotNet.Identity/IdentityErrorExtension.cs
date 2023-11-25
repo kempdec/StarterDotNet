@@ -12,6 +12,16 @@ public static class IdentityErrorExtension
     /// Obtém o nome da propriedade de <see cref="IdentityError"/>.
     /// </summary>
     /// <param name="error">O <see cref="IdentityError"/>.</param>
+    /// <returns>O nome da propriedade de <see cref="IdentityError"/>.</returns>
+    /// <exception cref="InvalidOperationException">É lançado quando <see cref="IdentityErrorPropertyNames"/> não
+    /// existe uma propriedade para <see cref="IdentityError.Code"/>.</exception>
+    public static string GetPropertyName(this IdentityError error) =>
+        GetPropertyName(error, new IdentityErrorPropertyNames());
+
+    /// <summary>
+    /// Obtém o nome da propriedade de <see cref="IdentityError"/>.
+    /// </summary>
+    /// <param name="error">O <see cref="IdentityError"/>.</param>
     /// <param name="propertyNames">O nome das propriedades de <see cref="IdentityError"/>.</param>
     /// <returns>O nome da propriedade de <see cref="IdentityError"/>.</returns>
     /// <exception cref="InvalidOperationException">É lançado quando <see cref="IdentityErrorPropertyNames"/> não
