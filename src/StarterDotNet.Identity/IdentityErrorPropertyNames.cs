@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace StarterDotNet.Identity;
+namespace KempDec.StarterDotNet.Identity;
 
 /// <summary>
 /// Define o nome das propriedades de <see cref="IdentityError"/>.

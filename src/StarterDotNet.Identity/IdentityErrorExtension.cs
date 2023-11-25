@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.Reflection;
 
-namespace StarterDotNet.Identity;
+namespace KempDec.StarterDotNet.Identity;
 
 /// <summary>
 /// Classe com métodos extensivos para <see cref="IdentityError"/>.
@@ -16,7 +16,7 @@ public static class IdentityErrorExtension
     /// <exception cref="InvalidOperationException">É lançado quando <see cref="IdentityErrorPropertyNames"/> não
     /// existe uma propriedade para <see cref="IdentityError.Code"/>.</exception>
     public static string GetPropertyName(this IdentityError error) =>
-        GetPropertyName(error, new IdentityErrorPropertyNames());
+        error.GetPropertyName(new IdentityErrorPropertyNames());
 
     /// <summary>
     /// Obtém o nome da propriedade de <see cref="IdentityError"/>.
