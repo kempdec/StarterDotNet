@@ -32,4 +32,8 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\StarterDotNet.Identity\StarterDotNet.Identity.csproj" />
+  </ItemGroup>
+
 </Project>
