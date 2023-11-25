@@ -4,12 +4,34 @@ StarterDotNet é uma biblioteca que fornece utilitários para projetos .NET.
 
 ## Índice
 
+- [Instalação](#instalação)
 - [ASP.NET Core Identity](#aspnet-core-identity)
 - [Autores](#autores)
 - [Notas de lançamento](#notas-de-lançamento)
 - [Licença](#licença)
 
+## Instalação
+
+Instale a biblioteca a partir do NuGet.
+
+``` powershell
+Install-Package KempDec.StarterDotNet
+```
+
+Esse pacote incluirá tudo do StarterDotNet, mas você pode optar por instalar
+apenas uma parte dele. Para isso consulte a seção que deseja.
+
 ## ASP.NET Core Identity
+
+### Instalação
+
+Você pode optar por instalar apenas essa parte da biblioteca a partir do NuGet.
+
+``` powershell
+Install-Package KempDec.StarterDotNet.Identity
+```
+
+### Como usar
 
 Você pode usar a extensão `GetPropertyName()` para ajudá-lo em validações de erros do ASP.NET Core Identity.
 
