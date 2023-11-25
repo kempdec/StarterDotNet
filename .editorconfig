@@ -191,6 +191,10 @@ csharp_preserve_single_line_statements = false
 
 # Regras de nomenclatura
 
+dotnet_naming_rule.const_should_be_pascal_case.severity = warning
+dotnet_naming_rule.const_should_be_pascal_case.symbols = const
+dotnet_naming_rule.const_should_be_pascal_case.style = pascal_case
+
 dotnet_naming_rule.private_or_internal_static_field_should_be_camel_case_begins_with_s_.severity = warning
 dotnet_naming_rule.private_or_internal_static_field_should_be_camel_case_begins_with_s_.symbols = private_or_internal_static_field
 dotnet_naming_rule.private_or_internal_static_field_should_be_camel_case_begins_with_s_.style = camel_case_begins_with_s_
@@ -233,6 +237,10 @@ dotnet_naming_symbols.non_field_members.applicable_kinds = property, event, meth
 dotnet_naming_symbols.non_field_members.applicable_accessibilities = public, internal, private, protected, protected_internal, private_protected
 dotnet_naming_symbols.non_field_members.required_modifiers = 
 
+dotnet_naming_symbols.const.applicable_kinds = field
+dotnet_naming_symbols.const.applicable_accessibilities = *
+dotnet_naming_symbols.const.required_modifiers = const
+
 # Estilos de nomenclatura
 
 dotnet_naming_style.pascal_case.required_prefix = 
@@ -261,3 +269,5 @@ dotnet_style_qualification_for_property = false:warning
 dotnet_style_qualification_for_method = false:warning
 dotnet_style_qualification_for_event = false:warning
 dotnet_style_readonly_field = true:warning
+end_of_line = crlf
+insert_final_newline = true
