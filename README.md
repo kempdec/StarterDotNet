@@ -5,6 +5,7 @@ StarterDotNet é uma biblioteca que fornece utilitários para projetos .NET.
 ## Índice
 
 - [Instalação](#instalação)
+- [Rotas do aplicativo](#rotas-do-aplicativo)
 - [ASP.NET Core Identity](#aspnet-core-identity)
 - [Autores](#autores)
 - [Notas de lançamento](#notas-de-lançamento)
@@ -20,6 +21,79 @@ Install-Package KempDec.StarterDotNet
 
 Esse pacote incluirá tudo do StarterDotNet, mas você pode optar por instalar
 apenas uma parte dele. Para isso consulte a seção que deseja.
+
+## Rotas do aplicativo
+
+### Instalação
+
+Você pode optar por instalar apenas essa parte da biblioteca a partir do NuGet.
+
+``` powershell
+Install-Package KempDec.StarterDotNet.AppRoutes
+```
+
+### Como usar
+
+Você pode usar `IAppRoute` e `AppRouteBase` para ajudá-lo a usar as rotas do seu aplicativo.
+
+Eles permitem que você pré-construa as rotas e depois apenas as usem de forma fácil e clara, definindo todos os
+parâmetros que são necessários e facilitando a manutenção do código caso alguma regra na sua rota mude.
+
+``` razor
+@* Ao invés de: *@
+<a href="/profile/@_profile.Id/orderhistory?status=@_orderStatus"></a>
+<a href="/start?email=@_email"></a>
+<a href="/start?email=@_email&redirectUrl=@_currentUrl"></a>
+
+@* Use algo como: *@
+<a href="@AppRoute.Profile.OrderHistory(_profile.Id, _orderStatus)"></a>
+<a href="@AppRoute.Start(_email)"></a>
+<a href="@AppRoute.Start(_email, _currentUrl)"></a>
+```
+
+Para isso, crie uma rota do aplicativo, de maneira semelhante a abaixo:
+
+``` csharp
+// Rota da página /start.
+public sealed class StartAppRoute(string? email = null, string? redirectUrl = null) : AppRouteBase("/start")
+{
+    protected override Dictionary<string, string?> Params { get; } = new()
+    {
+        { "email", email },
+        { "redirectUrl", redirectUrl }
+    };
+}
+
+// Rota da página /profile/{profileId}/orderhistory.
+public sealed class OrderHistoryAppRoute(int profileId, OrderStatusType? orderStatus = null)
+    : AppRouteBase($"/profile/{profileId}/orderhistory")
+{
+    protected override Dictionary<string, string?> Params { get; } = new()
+    {
+        { "status", orderStatus?.ToString() }
+    };
+}
+
+// Conjunto de rotas para /profile.
+public sealed class ProfilesAppRoute
+{
+    public OrderHistoryAppRoute OrderHistory(int profileId, OrderStatusType? orderStatus = null) =>
+        new(profileId, orderStatus);
+}
+```
+
+E então pré-construa as rotas em uma classe estática:
+
+``` csharp
+public static class AppRoute
+{
+    // Rotas para /profile.
+    public static ProfilesAppRoute Profile { get; } = new();
+
+    // Rota /start.
+    public static StartAppRoute Start(string? email = null) => new(email);
+}
+```
 
 ## ASP.NET Core Identity
 
