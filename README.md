@@ -43,6 +43,12 @@ Assembly.GetExecutionAssembly()
     .GetAllClassesWithInterface<T>();
 ```
 
+Você também pode usar `AssemblyHelper` para acessar os mesmos métodos de extensão do assembly em execução. Exemplo:
+
+``` csharp
+AssemblyHelper.GetAllClassesWithInterface<T>();
+```
+
 Os métodos de extensão disponíveis são:
 
 - `GetAllClassesWithInterface<T>()` - Obtém todas as classes do assembly especificado, se houver alguma, que
