@@ -1,0 +1,1 @@
+{"version":3,"file":"interop.js","sourceRoot":"","sources":["../../scripts/interop.ts"],"names":[],"mappings":"AAKA,MAAM,UAAU,gBAAgB,CAAC,SAAiB;IAE9C,IAAI,OAAO,GAAG,QAAQ,CAAC,cAAc,CAAC,SAAS,CAAC,CAAC;IAEjD,IAAI,OAAO,EAAE;QAET,OAAO,CAAC,KAAK,CAAC,EAAE,aAAa,EAAE,IAAI,EAAE,CAAC,CAAC;KAC1C;AACL,CAAC"}
