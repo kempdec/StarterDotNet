@@ -20,7 +20,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StarterDotNet.AppRoutes", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StarterDotNet.Blazor", "src\StarterDotNet.Blazor\StarterDotNet.Blazor.csproj", "{E8D26ACF-22C4-427B-BB73-F2946FF515A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarterDotNet.Sample", "samples\StarterDotNet.Sample\StarterDotNet.Sample.csproj", "{ADE15B46-5764-4B03-8C4E-4F5079A92E8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StarterDotNet.Sample", "samples\StarterDotNet.Sample\StarterDotNet.Sample.csproj", "{ADE15B46-5764-4B03-8C4E-4F5079A92E8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarterDotNet.Reflection", "src\StarterDotNet.Reflection\StarterDotNet.Reflection.csproj", "{62EEC4FC-7342-4350-9A2C-3CCA9B8B4DFD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,6 +50,10 @@ Global
 		{ADE15B46-5764-4B03-8C4E-4F5079A92E8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADE15B46-5764-4B03-8C4E-4F5079A92E8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADE15B46-5764-4B03-8C4E-4F5079A92E8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62EEC4FC-7342-4350-9A2C-3CCA9B8B4DFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62EEC4FC-7342-4350-9A2C-3CCA9B8B4DFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62EEC4FC-7342-4350-9A2C-3CCA9B8B4DFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62EEC4FC-7342-4350-9A2C-3CCA9B8B4DFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

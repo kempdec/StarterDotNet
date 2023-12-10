@@ -4,11 +4,14 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Title>StarterDotNet</Title>
+    <AssemblyName>KempDec.$(MSBuildProjectName)</AssemblyName>
+    <RootNamespace>KempDec.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <Title>StarterDotNet Reflection</Title>
     <Version>0.3.0</Version>
     <Authors>KempDec</Authors>
     <Company>KempDec Brasil Ltda.</Company>
-    <Product>StarterDotNet</Product>
+    <Product>StarterDotNet Reflection</Product>
     <Description>StarterDotNet é uma biblioteca que fornece utilitários para projetos .NET.</Description>
     <Copyright>2023 © KempDec Brasil Ltda.</Copyright>
     <PackageProjectUrl>https://github.com/kempdec/StarterDotNet</PackageProjectUrl>
@@ -16,12 +19,9 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/kempdec/StarterDotNet</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
-    <PackageTags>c-sharp;utilities;dotnet;utils</PackageTags>
+    <PackageTags>c-sharp;utilities;dotnet;utils;reflection;</PackageTags>
     <PackageOutputPath>..\..\published</PackageOutputPath>
-    <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RootNamespace>KempDec.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
-    <AssemblyName>KempDec.$(MSBuildProjectName)</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -33,12 +33,6 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\StarterDotNet.AppRoutes\StarterDotNet.AppRoutes.csproj" />
-    <ProjectReference Include="..\StarterDotNet.Identity\StarterDotNet.Identity.csproj" />
-    <ProjectReference Include="..\StarterDotNet.Reflection\StarterDotNet.Reflection.csproj" />
   </ItemGroup>
 
 </Project>

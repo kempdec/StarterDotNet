@@ -5,8 +5,9 @@ StarterDotNet é uma biblioteca que fornece utilitários para projetos .NET.
 ## Índice
 
 - [Instalação](#instalação)
-- [Rotas do aplicativo](#rotas-do-aplicativo)
+- [.NET Reflection](#net-reflection)
 - [ASP.NET Core Identity](#aspnet-core-identity)
+- [Rotas do aplicativo](#rotas-do-aplicativo)
 - [Autores](#autores)
 - [Notas de lançamento](#notas-de-lançamento)
 - [Licença](#licença)
@@ -21,6 +22,93 @@ Install-Package KempDec.StarterDotNet
 
 Esse pacote incluirá tudo do StarterDotNet, mas você pode optar por instalar
 apenas uma parte dele. Para isso consulte a seção que deseja.
+
+## .NET Reflection
+
+### Instalação
+
+Você pode optar por instalar apenas essa parte da biblioteca a partir do NuGet.
+
+``` powershell
+Install-Package KempDec.StarterDotNet.Reflection
+```
+
+### Como usar
+
+Você pode usar os métodos de extensão do **StarterDotNet Reflection** para te ajudar ao usar Reflection do .NET.
+Exemplo:
+
+``` csharp
+Assembly.GetExecutionAssembly()
+    .GetAllClassesWithInterface<T>();
+```
+
+Você também pode usar `AssemblyHelper` para acessar os mesmos métodos de extensão do assembly em execução. Exemplo:
+
+``` csharp
+AssemblyHelper.GetAllClassesWithInterface<T>();
+```
+
+Os métodos de extensão disponíveis são:
+
+- `GetAllClassesWithInterface<T>()` - Obtém todas as classes do assembly especificado, se houver alguma, que
+implemente o tipo da interface especificado.
+
+``` csharp
+public static IEnumerable<T?> GetAllClassesWithInterface<T>(this Assembly assembly);
+```
+
+- `GetAllClassesWithInterface<T>(Type interfaceType)` - Obtém todas as classes do assembly especificado, se houver
+alguma, que implemente o tipo da interface especificado.
+
+``` csharp
+public static IEnumerable<T?> GetAllClassesWithInterface<T>(this Assembly assembly, Type interfaceType);
+```
+
+- `GetAllClassesWithInterface(Type interfaceType)` - Obtém os tipos de todas as classes do assembly especificado, se
+houver alguma, que implemente o tipo da interface especificado.
+
+``` csharp
+public static IEnumerable<Type> GetAllClassesWithInterface(this Assembly assembly, Type interfaceType);
+```
+
+## ASP.NET Core Identity
+
+### Instalação
+
+Você pode optar por instalar apenas essa parte da biblioteca a partir do NuGet.
+
+``` powershell
+Install-Package KempDec.StarterDotNet.Identity
+```
+
+### Como usar
+
+Você pode usar a extensão `GetPropertyName()` para ajudá-lo em validações de erros do ASP.NET Core Identity.
+
+Ele é útil quando você usa um modelo de validação que relaciona o nome da propriedade com o erro, como
+**DataAnnotation** ou **FluentValidation**.
+
+``` csharp
+IdentityResult result = await UserManager.CreateAsync(user, _input.Password);
+
+if (!result.Suceeded)
+{
+    // Neste caso os erros de nome de usuário terão o nome da propriedade como "Email".
+    // 
+    // As propriedades já tem nomes definidos por padrão que são comumente usados, como os erros de e-mail,
+    // que terão o nome da propriedade como "Email" a menos que você mude, assim como acontece abaixo com os
+    // erros de nome de usuário.
+    var propertyNames = new IdentityErrorPropertiesName(username: nameof(_input.Email));
+
+    foreach (IdentityError error in result.Errors)
+    {
+        string propertyName = error.GetPropertyName(propertyNames);
+
+        ModelState.AddModelError(propertyName, error.Description);
+    }
+}
+```
 
 ## Rotas do aplicativo
 
@@ -92,44 +180,6 @@ public static class AppRoute
 
     // Rota /start.
     public static StartAppRoute Start(string? email = null) => new(email);
-}
-```
-
-## ASP.NET Core Identity
-
-### Instalação
-
-Você pode optar por instalar apenas essa parte da biblioteca a partir do NuGet.
-
-``` powershell
-Install-Package KempDec.StarterDotNet.Identity
-```
-
-### Como usar
-
-Você pode usar a extensão `GetPropertyName()` para ajudá-lo em validações de erros do ASP.NET Core Identity.
-
-Ele é útil quando você usa um modelo de validação que relaciona o nome da propriedade com o erro, como
-**DataAnnotation** ou **FluentValidation**.
-
-``` csharp
-IdentityResult result = await UserManager.CreateAsync(user, _input.Password);
-
-if (!result.Suceeded)
-{
-    // Neste caso os erros de nome de usuário terão o nome da propriedade como "Email".
-    // 
-    // As propriedades já tem nomes definidos por padrão que são comumente usados, como os erros de e-mail,
-    // que terão o nome da propriedade como "Email" a menos que você mude, assim como acontece abaixo com os
-    // erros de nome de usuário.
-    var propertyNames = new IdentityErrorPropertiesName(username: nameof(_input.Email));
-
-    foreach (IdentityError error in result.Errors)
-    {
-        string propertyName = error.GetPropertyName(propertyNames);
-
-        ModelState.AddModelError(propertyName, error.Description);
-    }
 }
 ```
 
