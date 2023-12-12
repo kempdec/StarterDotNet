@@ -7,6 +7,8 @@ StarterDotNet é uma biblioteca que fornece utilitários para projetos .NET.
 - [Instalação](#instalação)
 - [.NET Reflection](#net-reflection)
 - [ASP.NET Core Identity](#aspnet-core-identity)
+- [Blazor](#blazor)
+    - [JSInterop](#jsinterop)  
 - [Rotas do aplicativo](#rotas-do-aplicativo)
 - [Autores](#autores)
 - [Notas de lançamento](#notas-de-lançamento)
@@ -107,6 +109,83 @@ if (!result.Suceeded)
         string propertyName = error.GetPropertyName(propertyNames);
 
         ModelState.AddModelError(propertyName, error.Description);
+    }
+}
+```
+
+## Blazor
+
+### Instalação
+
+**Essa parte da biblioteca deve ser instalada a parte e NÃO está disponível no pacote principal. Instale essa biblioteca
+a partir do NuGet.**
+
+``` powershell
+Install-Package KempDec.StarterDotNet.Blazor
+```
+
+### Como usar
+
+#### JSInterop
+
+Você pode usar `StarterJSInterop` e `JSInteropBase` para facilitar a interopabilidade JavaScript do seu aplicativo e
+executar funções JavaScript a partir do seu código C# no Blazor.
+
+Para isso, crie um arquivo JavaScript contendo as funções que deseja usar com a interopabilidade. No exemplo abaixo o
+arquivo está localizado em **js/app.js**.
+
+**js/app.js**
+``` javascript
+// Função exportada que será invocada através do módulo.
+export function sum(num1, num2)
+{
+    return num1 + num2;
+}
+```
+
+Em seguida crie uma classe que herde `StarterJSInterop` ou `JSInteropBase` e importe o seu arquivo JavaScript que
+deseja usar com a interopabilidade. O exemplo abaixo herda `StarterJSInterop` por já vir com alguns métodos
+pré-construídos.
+
+``` csharp
+public class AppJSInterop : StarterJSInterop
+{
+    private readonly Task<IJSObjectReference> _moduleTask;
+
+    public AppJSInterop(IJSRuntime js) : base(js) => _moduleTask = ImportModuleFileAsync(moduleFilePath: "js/app.js");
+
+    // Interopabilidade com função "console.log" do JavaScript.
+    public ValueTask ConsoleLogAsync(string message) => JS.InvokeVoidAsync("console.log", message);
+
+    // Interopabilidade com a função "sum" do módulo, que foi exportada do arquivo JavaScript.
+    public async ValueTask<int> SumAsync(int num1, int num2)
+    {
+        IJSObjectReference module = await _moduleTask;
+
+        return await module.InvokeAsync<int>("sum", num1, num2);
+    }
+}
+```
+
+Adicione a injeção de dependência para `AppJSInterop` no seu arquivo `Program.cs`:
+
+``` csharp
+builder.Services.AddScoped<AppJSInterop>();
+```
+
+O uso seria semalhante ao exemplo abaixo:
+
+``` csharp
+public partial class Home
+{
+    [Inject]
+    private AppJSInterop JS { get; set; } = null!;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        int sumResult = await JS.SumAsync(num1: 1, num2: 2);
+
+        await JS.ConsoleLogAsync(message: $"O resultado da soma é: {sumResult}.");
     }
 }
 ```

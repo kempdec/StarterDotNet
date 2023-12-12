@@ -23,9 +23,10 @@ public abstract class JSInteropBase(IJSRuntime js) : IAsyncDisposable
     /// Adiciona um módulo JavaScript.
     /// </summary>
     /// <param name="name">O nome do módulo JavaScript a ser adicionado.</param>
-    /// <param name="jsObject">A referência do objeto do módulo JavaScript a ser adicionado.</param>
-    private void AddModule(string name, ValueTask<IJSObjectReference> jsObject) =>
-        _modules.Add(name, new Lazy<Task<IJSObjectReference>>(jsObject.AsTask));
+    /// <param name="jsObjectTask">A <see cref="Task"/> que representa a operação assíncrona, contendo a referência do
+    /// objeto do módulo JavaScript a ser adicionado.</param>
+    private void AddModule(string name, Task<IJSObjectReference> jsObjectTask) =>
+        _modules.Add(name, new Lazy<Task<IJSObjectReference>>(jsObjectTask));
 
     /// <inheritdoc/>
     public virtual async ValueTask DisposeAsync()
@@ -69,47 +70,34 @@ public abstract class JSInteropBase(IJSRuntime js) : IAsyncDisposable
     /// <summary>
     /// Importa o arquivo do módulo JavaScript especificado.
     /// </summary>
-    /// <param name="moduleFile">O arquivo do módulo JavaScript a ser importado.</param>
-    public void ImportModuleFile(JSModuleFile moduleFile)
-    {
-        ValueTask<IJSObjectReference> jsObject = JS.InvokeAsync<IJSObjectReference>("import",
-            moduleFile.ModuleFilePath);
-
-        AddModule(moduleFile.ModuleName, jsObject);
-    }
-
-    /// <summary>
-    /// Importa o arquivo do módulo JavaScript especificado.
-    /// </summary>
-    /// <param name="moduleName">O nome do módulo JavaScript.</param>
-    /// <param name="moduleFilePath">O caminho do arquivo do módulo JavaScript.</param>
-    public void ImportModuleFile(string moduleName, string moduleFilePath)
-    {
-        var moduleFile = new JSModuleFile(moduleName, moduleFilePath);
-
-        ImportModuleFile(moduleFile);
-    }
+    /// <param name="moduleFilePath">O caminho do arquivo do módulo JavaScript a ser importado.</param>
+    /// <returns>A <see cref="Task"/> que representa a operação assíncrona, contendo a referência do objeto do módulo
+    /// JavaScript.</returns>
+    public Task<IJSObjectReference> ImportModuleFileAsync(string moduleFilePath) =>
+        JS.InvokeAsync<IJSObjectReference>("import", moduleFilePath).AsTask();
 
     /// <summary>
     /// Importa o arquivo do módulo JavaScript especificado.
     /// </summary>
     /// <param name="moduleFile">O arquivo do módulo JavaScript a ser importado.</param>
     /// <returns>A <see cref="Task"/> que representa a operação assíncrona, contendo a referência do objeto do módulo
-    /// JavaScript importado.</returns>
+    /// JavaScript.</returns>
     public Task<IJSObjectReference> ImportModuleFileAsync(JSModuleFile moduleFile)
     {
-        ImportModuleFile(moduleFile);
+        Task<IJSObjectReference> jsObjectTask = ImportModuleFileAsync(moduleFile.ModuleFilePath);
 
-        return GetModuleAsync(moduleFile.ModuleName);
+        AddModule(moduleFile.ModuleName, jsObjectTask);
+
+        return jsObjectTask;
     }
 
     /// <summary>
     /// Importa o arquivo do módulo JavaScript especificado.
     /// </summary>
-    /// <param name="moduleName">O nome do módulo JavaScript.</param>
-    /// <param name="moduleFilePath">O caminho do arquivo do módulo JavaScript.</param>
+    /// <param name="moduleName">O nome do módulo JavaScript a ser importado.</param>
+    /// <param name="moduleFilePath">O caminho do arquivo do módulo JavaScript a ser importado.</param>
     /// <returns>A <see cref="Task"/> que representa a operação assíncrona, contendo a referência do objeto do módulo
-    /// JavaScript importado.</returns>
+    /// JavaScript.</returns>
     public Task<IJSObjectReference> ImportModuleFileAsync(string moduleName, string moduleFilePath)
     {
         var moduleFile = new JSModuleFile(moduleName, moduleFilePath);

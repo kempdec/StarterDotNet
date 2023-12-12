@@ -9,8 +9,7 @@ namespace KempDec.StarterDotNet.Blazor.JSInterops;
 public class StarterJSInterop : JSInteropBase
 {
     /// <summary>
-    /// A <see cref="Task"/> que representa a operação assíncrona, contendo a referência do objeto JavaScript do
-    /// módulo.
+    /// A <see cref="Task"/> que representa a operação assíncrona, contendo a referência do objeto JavaScript do módulo.
     /// </summary>
     private readonly Task<IJSObjectReference> _moduleTask;
 
