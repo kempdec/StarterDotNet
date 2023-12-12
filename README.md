@@ -8,7 +8,8 @@ StarterDotNet é uma biblioteca que fornece utilitários para projetos .NET.
 - [.NET Reflection](#net-reflection)
 - [ASP.NET Core Identity](#aspnet-core-identity)
 - [Blazor](#blazor)
-    - [JSInterop](#jsinterop)  
+    - [JSInterop](#jsinterop)
+    - [StarterRenderMode](#starterrendermode)
 - [Rotas do aplicativo](#rotas-do-aplicativo)
 - [Autores](#autores)
 - [Notas de lançamento](#notas-de-lançamento)
@@ -188,6 +189,23 @@ public partial class Home
         await JS.ConsoleLogAsync(message: $"O resultado da soma é: {sumResult}.");
     }
 }
+```
+
+#### StarterRenderMode
+
+Use `StarterRenderMode` para definir a renderização interativamente no servidor por meio  da hospedagem do Blazor
+Server sem pré-renderização do lado do servidor.
+
+Em seu arquivo `_Imports.razor` adicione:
+
+``` razor
+@using static KempDec.StarterDotNet.Blazor.StarterRenderMode
+```
+
+E então defina o modo de renderização da seguinte maneira:
+
+``` razor
+@rendermode InteractiveServerWithoutPrerendering
 ```
 
 ## Rotas do aplicativo
