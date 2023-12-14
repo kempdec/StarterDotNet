@@ -1,9 +1,12 @@
+using KempDec.StarterDotNet.Blazor.JSInterops;
 using StarterDotNet.Sample.Components;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+builder.Services.AddScoped<StarterJSInterop>();
 
 WebApplication app = builder.Build();
 
