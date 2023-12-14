@@ -190,6 +190,26 @@ public partial class Home
 }
 ```
 
+Os métodos disponíveis para `AppJSInterop` são:
+
+- `FocusOnElementIdAsync(string elementId)` - Foca em um elemento HTML, se houver algum, que possui o identificador especificado.
+
+``` csharp
+public ValueTask FocusOnElementIdAsync(string elementId);
+```
+
+- `OpenAsync(string url)` - Abre uma nova janela ou guia do navegador com a URL especificada.
+
+``` csharp
+public ValueTask OpenAsync(string url);
+```
+
+- `OpenAsync(string url, IBrowsingContext target)` - Abre uma nova janela ou guia do navegador com a URL especificada.
+
+``` csharp
+public ValueTask OpenAsync(string url, IBrowsingContext target);
+```
+
 ## Rotas do aplicativo
 
 ### Instalação

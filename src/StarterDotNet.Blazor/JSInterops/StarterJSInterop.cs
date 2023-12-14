@@ -1,4 +1,5 @@
-﻿using Microsoft.JSInterop;
+﻿using KempDec.StarterDotNet.Blazor.JSInterops.BrowsingContexts;
+using Microsoft.JSInterop;
 
 namespace KempDec.StarterDotNet.Blazor.JSInterops;
 
@@ -32,4 +33,21 @@ public class StarterJSInterop : JSInteropBase
 
         await module.InvokeVoidAsync("focusOnElementId", elementId);
     }
+
+    /// <summary>
+    /// Abre uma nova janela ou guia do navegador com a URL especificada.
+    /// </summary>
+    /// <param name="url">A URL da nova janela ou guia do navegador.</param>
+    /// <returns>O <see cref="ValueTask"/> que representa a operação assíncrona.</returns>
+    public ValueTask OpenAsync(string url) => OpenAsync(url, BrowsingContext.Blank);
+
+    /// <summary>
+    /// Abre uma nova janela ou guia do navegador com a URL especificada.
+    /// </summary>
+    /// <param name="url">A URL da nova janela ou guia do navegador.</param>
+    /// <param name="target">O contexto de navegação. Instâncias pré-construídas estão disponíveis em
+    /// <see cref="BrowsingContext"/>.</param>
+    /// <returns>O <see cref="ValueTask"/> que representa a operação assíncrona.</returns>
+    public ValueTask OpenAsync(string url, IBrowsingContext target) =>
+        JS.InvokeVoidAsync("open", url, target.Name);
 }
