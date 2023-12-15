@@ -62,5 +62,5 @@ public class StarterJSInterop : JSInteropBase
     /// <see cref="BrowsingContext"/>.</param>
     /// <returns>O <see cref="ValueTask"/> que representa a operação assíncrona.</returns>
     public ValueTask OpenAsync(string url, IBrowsingContext target) =>
-        JS.InvokeVoidAsync("open", url, target.Name);
+        Runtime.InvokeVoidAsync("open", url, target.Name);
 }

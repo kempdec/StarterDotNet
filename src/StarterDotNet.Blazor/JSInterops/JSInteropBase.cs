@@ -17,7 +17,7 @@ public abstract class JSInteropBase(IJSRuntime js) : IAsyncDisposable
     /// <summary>
     /// Obtém o runtime JavaScript ao qual as chamadas devem ser despachadas.
     /// </summary>
-    public IJSRuntime JS { get; } = js;
+    public IJSRuntime Runtime { get; } = js;
 
     /// <summary>
     /// Adiciona um módulo JavaScript.
@@ -74,7 +74,7 @@ public abstract class JSInteropBase(IJSRuntime js) : IAsyncDisposable
     /// <returns>A <see cref="Task"/> que representa a operação assíncrona, contendo a referência do objeto do módulo
     /// JavaScript.</returns>
     public Task<IJSObjectReference> ImportModuleFileAsync(string moduleFilePath) =>
-        JS.InvokeAsync<IJSObjectReference>("import", moduleFilePath).AsTask();
+        Runtime.InvokeAsync<IJSObjectReference>("import", moduleFilePath).AsTask();
 
     /// <summary>
     /// Importa o arquivo do módulo JavaScript especificado.

@@ -156,7 +156,7 @@ public class AppJSInterop : StarterJSInterop
     public AppJSInterop(IJSRuntime js) : base(js) => _moduleTask = ImportModuleFileAsync(moduleFilePath: "js/app.js");
 
     // Interopabilidade com função "console.log" do JavaScript.
-    public ValueTask ConsoleLogAsync(string message) => JS.InvokeVoidAsync("console.log", message);
+    public ValueTask ConsoleLogAsync(string message) => Runtime.InvokeVoidAsync("console.log", message);
 
     // Interopabilidade com a função "sum" do módulo, que foi exportada do arquivo JavaScript.
     public async ValueTask<int> SumAsync(int num1, int num2)
