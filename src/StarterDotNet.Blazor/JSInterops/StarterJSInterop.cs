@@ -23,6 +23,13 @@ public class StarterJSInterop : JSInteropBase
             moduleFilePath: "./_content/KempDec.StarterDotNet.Blazor/js/interop.js");
 
     /// <summary>
+    /// Registra a mensagem especificada no console.
+    /// </summary>
+    /// <param name="message">A mensagem a ser registrada no console.</param>
+    /// <returns>O <see cref="ValueTask"/> que representa a operação assíncrona.</returns>
+    public ValueTask ConsoleLogAsync(string message) => Runtime.InvokeVoidAsync("console.log", message);
+
+    /// <summary>
     /// Copia o texto especificado para a área de transferência.
     /// </summary>
     /// <param name="text">O texto a ser copiado para a área de transferência.</param>
