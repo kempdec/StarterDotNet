@@ -17,8 +17,8 @@ public class StarterJSInterop : JSInteropBase
     /// <summary>
     /// Inicializa uma nova instância de <see cref="StarterJSInterop"/>.
     /// </summary>
-    /// <param name="js">O runtime JavaScript ao qual as chamadas devem ser despachadas.</param>
-    public StarterJSInterop(IJSRuntime js) : base(js) =>
+    /// <param name="runtime">O runtime JavaScript ao qual as chamadas devem ser despachadas.</param>
+    public StarterJSInterop(IJSRuntime runtime) : base(runtime) =>
         _moduleTask = ImportModuleFileAsync(moduleName: "StarterDotNet",
             moduleFilePath: "./_content/KempDec.StarterDotNet.Blazor/js/interop.js");
 

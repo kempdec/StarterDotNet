@@ -144,7 +144,8 @@ public class AppJSInterop : StarterJSInterop
 {
     private readonly Task<IJSObjectReference> _moduleTask;
 
-    public AppJSInterop(IJSRuntime js) : base(js) => _moduleTask = ImportModuleFileAsync(moduleFilePath: "js/app.js");
+    public AppJSInterop(IJSRuntime runtime) : base(runtime) =>
+        _moduleTask = ImportModuleFileAsync(moduleFilePath: "js/app.js");
 
     // Interopabilidade com função "console.log" do JavaScript.
     public ValueTask ConsoleLogAsync(string message) => Runtime.InvokeVoidAsync("console.log", message);
