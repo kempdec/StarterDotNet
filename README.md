@@ -55,24 +55,15 @@ AssemblyHelper.GetAllClassesWithInterface<T>();
 
 Os métodos de extensão disponíveis são:
 
-- `GetAllClassesWithInterface<T>()` - Obtém todas as classes do assembly especificado, se houver alguma, que
-implemente o tipo da interface especificado.
-
 ``` csharp
+// Obtém todas as classes do assembly especificado, se houver alguma, que implemente o tipo da interface especificado.
 public static IEnumerable<T?> GetAllClassesWithInterface<T>(this Assembly assembly);
-```
 
-- `GetAllClassesWithInterface<T>(Type interfaceType)` - Obtém todas as classes do assembly especificado, se houver
-alguma, que implemente o tipo da interface especificado.
-
-``` csharp
+// Obtém todas as classes do assembly especificado, se houver alguma, que implemente o tipo da interface especificado.
 public static IEnumerable<T?> GetAllClassesWithInterface<T>(this Assembly assembly, Type interfaceType);
-```
 
-- `GetAllClassesWithInterface(Type interfaceType)` - Obtém os tipos de todas as classes do assembly especificado, se
-houver alguma, que implemente o tipo da interface especificado.
-
-``` csharp
+// Obtém os tipos de todas as classes do assembly especificado, se houver alguma, que implemente o tipo da interface
+especificado.
 public static IEnumerable<Type> GetAllClassesWithInterface(this Assembly assembly, Type interfaceType);
 ```
 
@@ -193,33 +184,20 @@ public partial class Home
 
 Os métodos disponíveis para `StarterJSInterop` são:
 
-- `FocusOnElementIdAsync(string elementId)` - Foca em um elemento HTML, se houver algum, que possui o identificador especificado.
-
 ``` csharp
+// Foca em um elemento HTML, se houver algum, que possui o identificador especificado.
 public ValueTask FocusOnElementIdAsync(string elementId);
-```
 
-- `ConsoleLogAsync(string message)` - Registra a mensagem especificada no console.
-
-``` csharp
+// Registra a mensagem especificada no console.
 public ValueTask ConsoleLogAsync(string message);
-```
 
-- `CopyToClipboardAsync(string text)` - Copia o texto especificado para a área de transferência.
-
-``` csharp
+// Copia o texto especificado para a área de transferência.
 public ValueTask<bool> CopyToClipboardAsync(string text);
-```
 
-- `OpenAsync(string url)` - Abre uma nova janela ou guia do navegador com a URL especificada.
-
-``` csharp
+// Abre uma nova janela ou guia do navegador com a URL especificada.
 public ValueTask OpenAsync(string url);
-```
 
-- `OpenAsync(string url, IBrowsingContext target)` - Abre uma nova janela ou guia do navegador com a URL especificada.
-
-``` csharp
+// Abre uma nova janela ou guia do navegador com a URL especificada.
 public ValueTask OpenAsync(string url, IBrowsingContext target);
 ```
 
