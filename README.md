@@ -191,7 +191,7 @@ public partial class Home
 }
 ```
 
-Os métodos disponíveis para `AppJSInterop` são:
+Os métodos disponíveis para `StarterJSInterop` são:
 
 - `FocusOnElementIdAsync(string elementId)` - Foca em um elemento HTML, se houver algum, que possui o identificador especificado.
 
