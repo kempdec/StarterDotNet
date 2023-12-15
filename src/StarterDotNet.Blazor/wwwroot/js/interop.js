@@ -9,4 +9,7 @@ export function focusOnElementId(elementId) {
         element.focus({ preventScroll: true });
     }
 }
+export function getReferrer() {
+    return document.referrer;
+}
 //# sourceMappingURL=interop.js.map

@@ -55,6 +55,18 @@ public class StarterJSInterop : JSInteropBase
     }
 
     /// <summary>
+    /// Obtém a URL do local que referenciou o usuário para a página atual.
+    /// </summary>
+    /// <returns>O <see cref="ValueTask"/> que representa a operação assíncrona, contendo a URL do local que
+    /// referenciou o usuário para a página atual.</returns>
+    public async ValueTask<string> GetReferrerAsync()
+    {
+        IJSObjectReference module = await _moduleTask;
+
+        return await module.InvokeAsync<string>("getReferrer");
+    }
+
+    /// <summary>
     /// Abre uma nova janela ou guia do navegador com a URL especificada.
     /// </summary>
     /// <param name="url">A URL da nova janela ou guia do navegador.</param>

@@ -26,3 +26,13 @@ export function focusOnElementId(elementId: string) {
         element.focus({ preventScroll: true });
     }
 }
+
+/**
+ * Obtém a URL do local que referenciou o usuário para a página atual.
+ * 
+ * @returns A URL do local que referenciou o usuário para a página atual.
+ */
+export function getReferrer(): string {
+
+    return document.referrer;
+}
