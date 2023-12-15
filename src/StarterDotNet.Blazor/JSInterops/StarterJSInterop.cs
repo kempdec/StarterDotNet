@@ -23,6 +23,19 @@ public class StarterJSInterop : JSInteropBase
             moduleFilePath: "./_content/KempDec.StarterDotNet.Blazor/js/interop.js");
 
     /// <summary>
+    /// Copia o texto especificado para a área de transferência.
+    /// </summary>
+    /// <param name="text">O texto a ser copiado para a área de transferência.</param>
+    /// <returns>O <see cref="ValueTask"/> que representa a operação assíncrona, contendo um sinalizador indicando se o
+    /// texto especificado foi copiado para a área de transferência..</returns>
+    public async ValueTask<bool> CopyToClipboardAsync(string text)
+    {
+        IJSObjectReference module = await _moduleTask;
+
+        return await module.InvokeAsync<bool>("copyToClipboard", text);
+    }
+
+    /// <summary>
     /// Foca em um elemento HTML, se houver algum, que possui o identificador especificado.
     /// </summary>
     /// <param name="elementId">O identificador do elemento HTML a ser buscado.</param>

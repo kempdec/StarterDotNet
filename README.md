@@ -198,6 +198,12 @@ Os métodos disponíveis para `AppJSInterop` são:
 public ValueTask FocusOnElementIdAsync(string elementId);
 ```
 
+- `CopyToClipboardAsync(string text)` - Copia o texto especificado para a área de transferência.
+
+``` csharp
+public async ValueTask<bool> CopyToClipboardAsync(string text);
+```
+
 - `OpenAsync(string url)` - Abre uma nova janela ou guia do navegador com a URL especificada.
 
 ``` csharp
