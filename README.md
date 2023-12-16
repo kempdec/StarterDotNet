@@ -142,10 +142,22 @@ pré-construídos.
 ``` csharp
 public class AppJSInterop : StarterJSInterop
 {
-    private readonly Task<IJSObjectReference> _moduleTask;
+    private readonly Lazy<Task<IJSObjectReference>> _moduleTask;
 
     public AppJSInterop(IJSRuntime runtime) : base(runtime) =>
         _moduleTask = ImportModuleFileAsync(moduleFilePath: "js/app.js");
+
+    public override async ValueTask DisposeAsync()
+    {
+        if (_moduleTask.IsValueCreated)
+        {
+            IJSObjectReference module = await _moduleTask.Value;
+
+            await module.DisposeAsync();
+        }
+
+        await base.DisposeAsync();
+    }
 
     // Interopabilidade com função "console.log" do JavaScript.
     public ValueTask ConsoleLogAsync(string message) => Runtime.InvokeVoidAsync("console.log", message);
@@ -153,7 +165,7 @@ public class AppJSInterop : StarterJSInterop
     // Interopabilidade com a função "sum" do módulo, que foi exportada do arquivo JavaScript.
     public async ValueTask<int> SumAsync(int num1, int num2)
     {
-        IJSObjectReference module = await _moduleTask;
+        IJSObjectReference module = await _moduleTask.Value;
 
         return await module.InvokeAsync<int>("sum", num1, num2);
     }

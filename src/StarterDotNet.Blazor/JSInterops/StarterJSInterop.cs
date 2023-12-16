@@ -10,9 +10,10 @@ namespace KempDec.StarterDotNet.Blazor.JSInterops;
 public class StarterJSInterop : JSInteropBase
 {
     /// <summary>
-    /// A <see cref="Task"/> que representa a operação assíncrona, contendo a referência do objeto JavaScript do módulo.
+    /// Um <see cref="Lazy{T}"/> que fornece suporte para inicialização lenta, com a <see cref="Task"/> que representa
+    /// a operação assíncrona, contendo a referência do objeto JavaScript do módulo.
     /// </summary>
-    private readonly Task<IJSObjectReference> _moduleTask;
+    private readonly Lazy<Task<IJSObjectReference>> _moduleTask;
 
     /// <summary>
     /// Inicializa uma nova instância de <see cref="StarterJSInterop"/>.
@@ -21,6 +22,19 @@ public class StarterJSInterop : JSInteropBase
     public StarterJSInterop(IJSRuntime runtime) : base(runtime) =>
         _moduleTask = ImportModuleFileAsync(moduleName: "StarterDotNet",
             moduleFilePath: "./_content/KempDec.StarterDotNet.Blazor/js/interop.js");
+
+    /// <inheritdoc/>
+    public override async ValueTask DisposeAsync()
+    {
+        if (_moduleTask.IsValueCreated)
+        {
+            IJSObjectReference module = await _moduleTask.Value;
+
+            await module.DisposeAsync();
+        }
+
+        await base.DisposeAsync();
+    }
 
     /// <summary>
     /// Registra a mensagem especificada no console.
@@ -37,7 +51,7 @@ public class StarterJSInterop : JSInteropBase
     /// texto especificado foi copiado para a área de transferência..</returns>
     public async ValueTask<bool> CopyToClipboardAsync(string text)
     {
-        IJSObjectReference module = await _moduleTask;
+        IJSObjectReference module = await _moduleTask.Value;
 
         return await module.InvokeAsync<bool>("copyToClipboard", text);
     }
@@ -49,7 +63,7 @@ public class StarterJSInterop : JSInteropBase
     /// <returns>O <see cref="ValueTask"/> que representa a operação assíncrona.</returns>
     public async ValueTask FocusOnElementIdAsync(string elementId)
     {
-        IJSObjectReference module = await _moduleTask;
+        IJSObjectReference module = await _moduleTask.Value;
 
         await module.InvokeVoidAsync("focusOnElementId", elementId);
     }
@@ -61,7 +75,7 @@ public class StarterJSInterop : JSInteropBase
     /// referenciou o usuário para a página atual.</returns>
     public async ValueTask<string> GetReferrerAsync()
     {
-        IJSObjectReference module = await _moduleTask;
+        IJSObjectReference module = await _moduleTask.Value;
 
         return await module.InvokeAsync<string>("getReferrer");
     }

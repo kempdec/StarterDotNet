@@ -23,10 +23,11 @@ public abstract class JSInteropBase(IJSRuntime js) : IAsyncDisposable
     /// Adiciona um módulo JavaScript.
     /// </summary>
     /// <param name="name">O nome do módulo JavaScript a ser adicionado.</param>
-    /// <param name="jsObjectTask">A <see cref="Task"/> que representa a operação assíncrona, contendo a referência do
-    /// objeto do módulo JavaScript a ser adicionado.</param>
-    private void AddModule(string name, Task<IJSObjectReference> jsObjectTask) =>
-        _modules.Add(name, new Lazy<Task<IJSObjectReference>>(jsObjectTask));
+    /// <param name="jsObjectTask">Um <see cref="Lazy{T}"/> que fornece suporte para inicialização lenta, com a
+    /// <see cref="Task"/> que representa a operação assíncrona, contendo a referência do objeto do módulo JavaScript
+    /// a ser adicionado.</param>
+    private void AddModule(string name, Lazy<Task<IJSObjectReference>> jsObjectTask) =>
+        _modules.Add(name, jsObjectTask);
 
     /// <inheritdoc/>
     public virtual async ValueTask DisposeAsync()
@@ -71,20 +72,20 @@ public abstract class JSInteropBase(IJSRuntime js) : IAsyncDisposable
     /// Importa o arquivo do módulo JavaScript especificado.
     /// </summary>
     /// <param name="moduleFilePath">O caminho do arquivo do módulo JavaScript a ser importado.</param>
-    /// <returns>A <see cref="Task"/> que representa a operação assíncrona, contendo a referência do objeto do módulo
-    /// JavaScript.</returns>
-    public Task<IJSObjectReference> ImportModuleFileAsync(string moduleFilePath) =>
-        Runtime.InvokeAsync<IJSObjectReference>("import", moduleFilePath).AsTask();
+    /// <returns>Um <see cref="Lazy{T}"/> que fornece suporte para inicialização lenta, com a <see cref="Task"/> que
+    /// representa a operação assíncrona, contendo a referência do objeto do módulo JavaScript.</returns>
+    public Lazy<Task<IJSObjectReference>> ImportModuleFileAsync(string moduleFilePath) =>
+        new(() => Runtime.InvokeAsync<IJSObjectReference>("import", moduleFilePath).AsTask());
 
     /// <summary>
     /// Importa o arquivo do módulo JavaScript especificado.
     /// </summary>
     /// <param name="moduleFile">O arquivo do módulo JavaScript a ser importado.</param>
-    /// <returns>A <see cref="Task"/> que representa a operação assíncrona, contendo a referência do objeto do módulo
-    /// JavaScript.</returns>
-    public Task<IJSObjectReference> ImportModuleFileAsync(JSModuleFile moduleFile)
+    /// <returns>Um <see cref="Lazy{T}"/> que fornece suporte para inicialização lenta, com a <see cref="Task"/> que
+    /// representa a operação assíncrona, contendo a referência do objeto do módulo JavaScript.</returns>
+    public Lazy<Task<IJSObjectReference>> ImportModuleFileAsync(JSModuleFile moduleFile)
     {
-        Task<IJSObjectReference> jsObjectTask = ImportModuleFileAsync(moduleFile.ModuleFilePath);
+        Lazy<Task<IJSObjectReference>> jsObjectTask = ImportModuleFileAsync(moduleFile.ModuleFilePath);
 
         AddModule(moduleFile.ModuleName, jsObjectTask);
 
@@ -96,9 +97,9 @@ public abstract class JSInteropBase(IJSRuntime js) : IAsyncDisposable
     /// </summary>
     /// <param name="moduleName">O nome do módulo JavaScript a ser importado.</param>
     /// <param name="moduleFilePath">O caminho do arquivo do módulo JavaScript a ser importado.</param>
-    /// <returns>A <see cref="Task"/> que representa a operação assíncrona, contendo a referência do objeto do módulo
-    /// JavaScript.</returns>
-    public Task<IJSObjectReference> ImportModuleFileAsync(string moduleName, string moduleFilePath)
+    /// <returns>Um <see cref="Lazy{T}"/> que fornece suporte para inicialização lenta, com a <see cref="Task"/> que
+    /// representa a operação assíncrona, contendo a referência do objeto do módulo JavaScript.</returns>
+    public Lazy<Task<IJSObjectReference>> ImportModuleFileAsync(string moduleName, string moduleFilePath)
     {
         var moduleFile = new JSModuleFile(moduleName, moduleFilePath);
 
