@@ -140,7 +140,7 @@ deseja usar com a interopabilidade. O exemplo abaixo herda `StarterJSInterop` po
 pré-construídos.
 
 ``` csharp
-public class AppJSInterop : StarterJSInterop
+public class AppJSInterop : StarterJSInterop, IAsyncDisposable
 {
     private readonly Lazy<Task<IJSObjectReference>> _moduleTask;
 

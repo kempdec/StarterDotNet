@@ -7,7 +7,7 @@ namespace KempDec.StarterDotNet.Blazor.JSInterops;
 /// Responsável pela interopabilidade JavaScript do StarterDotNet.
 /// </summary>
 /// <remarks>Use essa classe com injeção de dependência no seu aplicativo.</remarks>
-public class StarterJSInterop : JSInteropBase
+public class StarterJSInterop : JSInteropBase, IAsyncDisposable
 {
     /// <summary>
     /// Um <see cref="Lazy{T}"/> que fornece suporte para inicialização lenta, com a <see cref="Task"/> que representa
