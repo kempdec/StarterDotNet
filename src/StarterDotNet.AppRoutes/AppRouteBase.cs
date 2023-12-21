@@ -13,14 +13,16 @@ public abstract class AppRouteBase : IAppRoute
     /// <param name="route">A rota do aplicativo.</param>
     /// <param name="parameters">Os parâmetros da rota. Esses parâmetros serão separados por /. Para parâmetro de
     /// consulta use <see cref="Params"/>.</param>
-    public AppRouteBase(string route, params string[] parameters)
+    public AppRouteBase(string route, params string?[] parameters)
     {
-        foreach (string parameter in parameters)
+        foreach (string? parameter in parameters)
         {
-            if (!string.IsNullOrWhiteSpace(parameter))
+            if (string.IsNullOrWhiteSpace(parameter))
             {
-                route += $"/{parameter}";
+                break;
             }
+
+            route += $"/{parameter}";
         }
 
         Route = route;
