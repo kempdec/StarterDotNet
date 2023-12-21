@@ -5,10 +5,27 @@ namespace KempDec.StarterDotNet.AppRoutes;
 /// <summary>
 /// Fornece abstração para uma rota do aplicativo.
 /// </summary>
-/// <remarks>Inicializa uma nova instância de <see cref="AppRouteBase"/>.</remarks>
-/// <param name="route">A rota do aplicativo.</param>
-public abstract class AppRouteBase(string route) : IAppRoute
+public abstract class AppRouteBase : IAppRoute
 {
+    /// <summary>
+    /// Inicializa uma nova instância de <see cref="AppRouteBase"/>.
+    /// </summary>
+    /// <param name="route">A rota do aplicativo.</param>
+    /// <param name="parameters">Os parâmetros da rota. Esses parâmetros serão separados por /. Para parâmetro de
+    /// consulta use <see cref="Params"/>.</param>
+    public AppRouteBase(string route, params string[] parameters)
+    {
+        foreach (string parameter in parameters)
+        {
+            if (!string.IsNullOrWhiteSpace(parameter))
+            {
+                route += $"/{parameter}";
+            }
+        }
+
+        Route = route;
+    }
+
     /// <summary>
     /// Retorna a representação da rota do aplicativo em uma cadeia de caracteres.
     /// </summary>
@@ -21,7 +38,7 @@ public abstract class AppRouteBase(string route) : IAppRoute
     public string FullRoute => QueryHelpers.AddQueryString(Route, Params);
 
     /// <inheritdoc/>
-    public string Route { get; } = route;
+    public string Route { get; }
 
     /// <summary>
     /// Obtém ou define os parâmetros da rota do aplicativo.

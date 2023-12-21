@@ -275,7 +275,7 @@ public sealed class StartAppRoute(string? email = null, string? redirectUrl = nu
 
 // Rota da página /profile/{profileId}/orderhistory.
 public sealed class OrderHistoryAppRoute(int profileId, OrderStatusType? orderStatus = null)
-    : AppRouteBase($"/profile/{profileId}/orderhistory")
+    : AppRouteBase("/profile", profileId.ToString(), "orderhistory")
 {
     protected override Dictionary<string, string?> Params { get; } = new()
     {
