@@ -41,6 +41,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\StarterDotNet.AppRoutes\StarterDotNet.AppRoutes.csproj" />
+    <ProjectReference Include="..\StarterDotNet.Extensions\StarterDotNet.Extensions.csproj" />
     <ProjectReference Include="..\StarterDotNet.Identity\StarterDotNet.Identity.csproj" />
     <ProjectReference Include="..\StarterDotNet.Reflection\StarterDotNet.Reflection.csproj" />
   </ItemGroup>

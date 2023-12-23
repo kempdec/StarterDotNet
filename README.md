@@ -10,6 +10,7 @@ StarterDotNet é uma biblioteca que fornece utilitários para projetos .NET.
 - [Blazor](#blazor)
     - [JSInterop](#jsinterop)
     - [StarterRenderMode](#starterrendermode)
+- [Métodos de extensão avulsos](#métodos-de-extensão-avulsos)
 - [Rotas do aplicativo](#rotas-do-aplicativo)
 - [Autores](#autores)
 - [Notas de lançamento](#notas-de-lançamento)
@@ -229,6 +230,26 @@ E então defina o modo de renderização da seguinte maneira:
 
 ``` razor
 @rendermode InteractiveServerWithoutPrerendering
+```
+
+## Métodos de extensão avulsos
+
+Você pode optar por instalar apenas essa parte da biblioteca a partir do NuGet.
+
+``` powershell
+Install-Package KempDec.StarterDotNet.Extensions
+```
+
+### Métodos disponíveis
+
+Os métodos disponíveis são:
+
+``` csharp
+// Obtém uma saudação com base na hora especificada.
+public static string Greeting(this int hour);
+
+// Obtém uma saudação com base na hora do <see cref="DateTime"/> especificado.
+public static string Greeting(this DateTime date);
 ```
 
 ## Rotas do aplicativo
