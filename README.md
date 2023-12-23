@@ -234,6 +234,8 @@ E então defina o modo de renderização da seguinte maneira:
 
 ## Métodos de extensão avulsos
 
+### Instalação
+
 Você pode optar por instalar apenas essa parte da biblioteca a partir do NuGet.
 
 ``` powershell
