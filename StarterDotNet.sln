@@ -24,7 +24,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StarterDotNet.Sample", "sam
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StarterDotNet.Reflection", "src\StarterDotNet.Reflection\StarterDotNet.Reflection.csproj", "{62EEC4FC-7342-4350-9A2C-3CCA9B8B4DFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarterDotNet.Generics", "src\StarterDotNet.Generics\StarterDotNet.Generics.csproj", "{E0556FEC-31A2-49C4-A6D4-A1CED05B7C9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StarterDotNet.Generics", "src\StarterDotNet.Generics\StarterDotNet.Generics.csproj", "{E0556FEC-31A2-49C4-A6D4-A1CED05B7C9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarterDotNet.Extensions", "src\StarterDotNet.Extensions\StarterDotNet.Extensions.csproj", "{ED28E99F-025A-4583-8472-ACCB906D6255}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -60,6 +62,10 @@ Global
 		{E0556FEC-31A2-49C4-A6D4-A1CED05B7C9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0556FEC-31A2-49C4-A6D4-A1CED05B7C9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0556FEC-31A2-49C4-A6D4-A1CED05B7C9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED28E99F-025A-4583-8472-ACCB906D6255}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED28E99F-025A-4583-8472-ACCB906D6255}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED28E99F-025A-4583-8472-ACCB906D6255}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED28E99F-025A-4583-8472-ACCB906D6255}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
