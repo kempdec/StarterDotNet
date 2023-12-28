@@ -247,11 +247,19 @@ Install-Package KempDec.StarterDotNet.Extensions
 Os métodos disponíveis são:
 
 ``` csharp
+// Substitui o item de formato em uma cadeia de caracteres especificada pela representação de cadeia de caracteres
+// de um objeto correspondente em uma matriz especificada.
+public static string FormatWith(this string format, params object?[] args);
+
 // Obtém uma saudação com base na hora especificada.
 public static string Greeting(this int hour);
 
 // Obtém uma saudação com base na hora do <see cref="DateTime"/> especificado.
 public static string Greeting(this DateTime date);
+
+// Lança <see cref="InvalidOperationException"/> quando <paramref name="obj"/> é nulo.
+// Esse método é para ser usado somente com propriedades ou campos.
+public static void ThrowIfNull(this object? obj, string? propertyOrFieldName = null);
 ```
 
 ## Rotas do aplicativo
