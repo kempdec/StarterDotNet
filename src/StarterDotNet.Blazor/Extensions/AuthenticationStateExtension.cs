@@ -39,7 +39,7 @@ public static class AuthenticationStateExtension
     /// <returns>A <see cref="Task"/> que representa a operação assíncrona, contendo um sinalizador indicando se o
     /// usuário de <see cref="ClaimsPrincipal"/> em <paramref name="authenticationState"/> tem alguma das funções
     /// especificadas, separadas por vírgula (,).</returns>
-    public static async Task<bool> UserIsInRolesNameAsync(this Task<AuthenticationState> authenticationState,
+    public static async Task<bool> UserIsInRoleNamesAsync(this Task<AuthenticationState> authenticationState,
         string roleNames, Func<Task> func)
     {
         if (await UserIsInRoleNamesAsync(authenticationState, roleNames))
