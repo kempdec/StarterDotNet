@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <Title>StarterDotNet Identity</Title>
-    <Version>0.1.0</Version>
+    <Version>0.10.0</Version>
     <Authors>KempDec</Authors>
     <Company>KempDec Brasil Ltda.</Company>
     <Product>StarterDotNet Identity</Product>

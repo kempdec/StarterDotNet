@@ -8,7 +8,7 @@
     <RootNamespace>KempDec.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <Title>StarterDotNet Blazor</Title>
-    <Version>0.6.0</Version>
+    <Version>0.10.0</Version>
     <Authors>KempDec</Authors>
     <Company>KempDec Brasil Ltda.</Company>
     <Product>StarterDotNet Blazor</Product>
