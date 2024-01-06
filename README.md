@@ -115,7 +115,7 @@ Os métodos de extensão disponíveis são:
 ``` csharp
 // Determina se o usuário de <see cref="ClaimsPrincipal"/> tem alguma das funções especificadas, separadas por
 // vírgula (,).
-public static bool IsInRoleName(this ClaimsPrincipal principal, string roleNames);
+public static bool IsInRoleNames(this ClaimsPrincipal principal, string roleNames);
 ```
 
 ## Blazor

@@ -23,7 +23,7 @@ public static class AuthenticationStateExtension
     {
         AuthenticationState authState = await authenticationState;
 
-        return authState.User.IsInRoleName(roleNames);
+        return authState.User.IsInRoleNames(roleNames);
     }
 
     /// <summary>

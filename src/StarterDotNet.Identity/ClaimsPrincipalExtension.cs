@@ -15,6 +15,6 @@ public static class ClaimsPrincipalExtension
     /// <param name="roleNames">Os nomes das funções separadas por vírgula (,).</param>
     /// <returns>Um sinalizador indicando se o usuário de <see cref="ClaimsPrincipal"/> tem alguma das funções
     /// especificadas, separadas por vírgula (,).</returns>
-    public static bool IsInRoleName(this ClaimsPrincipal principal, string roleNames) =>
+    public static bool IsInRoleNames(this ClaimsPrincipal principal, string roleNames) =>
         roleNames.Split(',').Any(principal.IsInRole);
 }
