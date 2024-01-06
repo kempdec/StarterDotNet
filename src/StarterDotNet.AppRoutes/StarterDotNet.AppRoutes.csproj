@@ -13,7 +13,7 @@
     <Company>KempDec Brasil Ltda.</Company>
     <Product>StarterDotNet AppRoutes</Product>
     <Description>StarterDotNet é uma biblioteca que fornece utilitários para projetos .NET.</Description>
-    <Copyright>2023 © KempDec Brasil Ltda.</Copyright>
+    <Copyright>2023-2024 © KempDec Brasil Ltda.</Copyright>
     <PackageProjectUrl>https://github.com/kempdec/StarterDotNet</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
