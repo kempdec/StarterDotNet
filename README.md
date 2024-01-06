@@ -80,6 +80,8 @@ Install-Package KempDec.StarterDotNet.Identity
 
 ### Como usar
 
+#### GetPropertyName
+
 Você pode usar a extensão `GetPropertyName()` para ajudá-lo em validações de erros do ASP.NET Core Identity.
 
 Ele é útil quando você usa um modelo de validação que relaciona o nome da propriedade com o erro, como
@@ -104,6 +106,16 @@ if (!result.Suceeded)
         ModelState.AddModelError(propertyName, error.Description);
     }
 }
+```
+
+#### Outras extensões
+
+Os métodos de extensão disponíveis são:
+
+``` csharp
+// Determina se o usuário de <see cref="ClaimsPrincipal"/> tem alguma das funções especificadas, separadas por
+// vírgula (,).
+public static bool IsInRoleName(this ClaimsPrincipal principal, string roleNames);
 ```
 
 ## Blazor
