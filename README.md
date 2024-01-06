@@ -244,6 +244,21 @@ E então defina o modo de renderização da seguinte maneira:
 @rendermode InteractiveServerWithoutPrerendering
 ```
 
+#### Métodos de extensão
+
+Os métodos de extensão disponíveis são:
+
+``` csharp
+// Determina se o usuário de <see cref="ClaimsPrincipal"/> em <paramref name="authenticationState"/> tem alguma das
+// funções especificadas, separadas por vírgula (,).
+public static Task<bool> UserIsInRoleNamesAsync(this Task<AuthenticationState> authenticationState, string roleNames);
+
+// Determina se o usuário de <see cref="ClaimsPrincipal"/> em <paramref name="authenticationState"/> tem alguma
+// das funções especificadas, separadas por vírgula (,).
+public static Task<bool> UserIsInRoleNamesAsync(this Task<AuthenticationState> authenticationState, string roleNames,
+    Func<Task> func);
+```
+
 ## Métodos de extensão avulsos
 
 ### Instalação
