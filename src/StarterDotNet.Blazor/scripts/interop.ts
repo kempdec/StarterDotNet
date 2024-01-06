@@ -13,6 +13,36 @@ export function copyToClipboard(text: string): Promise<Boolean> {
 }
 
 /**
+ * Desabilita um botão, se houver algum, que possui o identificador especificado.
+ * 
+ * @param btnId O identificador do botão a ser buscado.
+ */
+export function disableBtnId(btnId: string) {
+
+    let btn = document.getElementById(btnId) as HTMLButtonElement;
+
+    if (btn) {
+
+        btn.disabled = true;
+    }
+}
+
+/**
+ * Habilita um botão, se houver algum, que possui o identificador especificado.
+ * 
+ * @param btnId O identificador do botão a ser buscado.
+ */
+export function enableBtnId(btnId: string) {
+
+    let btn = document.getElementById(btnId) as HTMLButtonElement;
+
+    if (btn) {
+
+        btn.disabled = false;
+    }
+}
+
+/**
  * Foca em um elemento HTML, se houver algum, que possui o identificador especificado.
  * 
  * @param elementId O identificador do elemento HTML a ser buscado.

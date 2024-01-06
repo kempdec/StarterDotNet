@@ -214,6 +214,12 @@ Os métodos disponíveis para `StarterJSInterop` são:
 // Foca em um elemento HTML, se houver algum, que possui o identificador especificado.
 public ValueTask FocusOnElementIdAsync(string elementId);
 
+// Habilita um botão, se houver algum, que possui o identificador especificado.
+public ValueTask EnableBtnIdAsync(string btnId);
+
+// Desabilita um botão, se houver algum, que possui o identificador especificado.
+public ValueTask DisableBtnIdAsync(string btnId);
+
 // Registra a mensagem especificada no console.
 public ValueTask ConsoleLogAsync(string message);
 

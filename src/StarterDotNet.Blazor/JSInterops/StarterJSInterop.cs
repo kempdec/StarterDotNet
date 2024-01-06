@@ -57,6 +57,30 @@ public class StarterJSInterop : JSInteropBase, IAsyncDisposable
     }
 
     /// <summary>
+    /// Desabilita um botão, se houver algum, que possui o identificador especificado.
+    /// </summary>
+    /// <param name="btnId">O identificador do botão a ser buscado.</param>
+    /// <returns>O <see cref="ValueTask"/> que representa a operação assíncrona.</returns>
+    public async ValueTask DisableBtnIdAsync(string btnId)
+    {
+        IJSObjectReference module = await _moduleTask.Value;
+
+        await module.InvokeVoidAsync("disableBtnId", btnId);
+    }
+
+    /// <summary>
+    /// Habilita um botão, se houver algum, que possui o identificador especificado.
+    /// </summary>
+    /// <param name="btnId">O identificador do botão a ser buscado.</param>
+    /// <returns>O <see cref="ValueTask"/> que representa a operação assíncrona.</returns>
+    public async ValueTask EnableBtnIdAsync(string btnId)
+    {
+        IJSObjectReference module = await _moduleTask.Value;
+
+        await module.InvokeVoidAsync("enableBtnId", btnId);
+    }
+
+    /// <summary>
     /// Foca em um elemento HTML, se houver algum, que possui o identificador especificado.
     /// </summary>
     /// <param name="elementId">O identificador do elemento HTML a ser buscado.</param>
