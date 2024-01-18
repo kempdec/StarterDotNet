@@ -45,6 +45,6 @@ public static class AssemblyExtension
     {
         Type[] types = assembly.GetTypes();
 
-        return types.Where(e => e.IsClass && e.GetInterfaces().Contains(interfaceType));
+        return types.Where(e => e.IsClass && !e.IsAbstract && e.GetInterfaces().Contains(interfaceType));
     }
 }
