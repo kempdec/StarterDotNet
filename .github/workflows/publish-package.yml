@@ -1,0 +1,31 @@
+name: Publicar pacote
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Configurar .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.0.x
+        
+    - name: Restaurar dependências
+      run: dotnet restore
+      
+    - name: Gerar pacote
+      run: dotnet pack
+      
+    - name: Carregar o pacote do NuGet
+      run: |
+        cd published/
+        dotnet nuget push *.nupkg --api-key ${{ secrets.PACKAGE_TOKEN }} --source "https://nuget.pkg.github.com/kempdec/index.json" --skip-duplicate
