@@ -31,6 +31,6 @@ public static class IdentityErrorExtension
         PropertyInfo property = propertyNames.GetType().GetProperty(error.Code)
             ?? throw new InvalidOperationException($"Não existe uma propriedade com o código '{error.Code}'.");
 
-        return property.GetValue(error)!.ToString()!;
+        return property.GetValue(obj: propertyNames)!.ToString()!;
     }
 }
