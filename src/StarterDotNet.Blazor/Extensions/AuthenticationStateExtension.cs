@@ -44,7 +44,7 @@ public static class AuthenticationStateExtension
     {
         if (await UserIsInRoleNamesAsync(authenticationState, roleNames))
         {
-            await func();
+            await func.Invoke();
 
             return true;
         }
