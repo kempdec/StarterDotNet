@@ -1,0 +1,81 @@
+{
+  // As configurações do subcomando de criação automática de um release.
+  "CreateCommand": {
+    // O nome do projeto.
+    "ProjectName": "StarterDotNet",
+
+    // Os tipos das mensagens de commit.
+    "Types": [
+      "feat=Novidades desta versão",
+      "fix=Principais correções desta versão",
+      "chore=Notas técnicas",
+      "docs=Documentação",
+      "refactor=Refatorações"
+    ],
+
+    // As substituições do início das mensagens de commit.
+    "Replaces": {
+      // Adicionar.
+      "Adicionar": "Foi adicionado",
+      "Adicionar o ": "Foi adicionado o ",
+      "Adicionar a ": "Foi adicionada a ",
+      "Adicionar os ": "Foram adicionados os ",
+      "Adicionar as ": "Foram adicionadas as ",
+
+      // Alterar.
+      "Alterar": "Foi alterado",
+      "Alterar o ": "Foi alterado o ",
+      "Alterar a ": "Foi alterada a ",
+      "Alterar os ": "Foram alterados os ",
+      "Alterar as ": "Foram alteradas as ",
+
+      // Atualizar.
+      "Atualizar": "Foi atualizado",
+      "Atualizar o ": "Foi atualizado o ",
+      "Atualizar a ": "Foi atualizada a ",
+      "Atualizar os ": "Foram atualizados os ",
+      "Atualizar as ": "Foram atualizadas as ",
+
+      // Remover.
+      "Remover": "Foi removido",
+      "Remover o ": "Foi removido o ",
+      "Remover a ": "Foi removida a ",
+      "Remover os ": "Foram removidos os ",
+      "Remover as ": "Foram removidas as ",
+
+      // Refatorar.
+      "Refatorar": "Foi refatorado",
+      "Refatorar o ": "Foi refatorado o ",
+      "Refatorar a ": "Foi refatorada a ",
+      "Refatorar os ": "Foram refatorados os ",
+      "Refatorar as ": "Foram refatoradas as ",
+
+      // Mover.
+      "Mover": "Foi movido",
+      "Mover o ": "Foi movido o ",
+      "Mover a ": "Foi movida a ",
+      "Mover os ": "Foram movidas os ",
+      "Mover as ": "Foram movidas as ",
+
+      // Corrigir.
+      "Corrigir": "Foi corrigido",
+      "Corrigir o ": "Foi corrigido o ",
+      "Corrigir a ": "Foi corrigido a ",
+      "Corrigir os ": "Foram corrigidos os ",
+      "Corrigir as ": "Foram corrigidas as ",
+
+      // Aprimorar.
+      "Aprimorar": "Foi aprimorado",
+      "Aprimorar o ": "Foi aprimorado o ",
+      "Aprimorar a ": "Foi aprimorado a ",
+      "Aprimorar os ": "Foram aprimorados os ",
+      "Aprimorar as ": "Foram aprimoradas as "
+    },
+
+    // Os inícios das mensagens de commit que serão ignoradas.
+    "Ignores": [
+      "Refatorar.",
+      "Merge"
+    ]
+  }
+}

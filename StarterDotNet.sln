@@ -8,6 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens
 		.editorconfig = .editorconfig
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
+		autorelease.config.json = autorelease.config.json
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
@@ -26,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StarterDotNet.Reflection", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StarterDotNet.Generics", "src\StarterDotNet.Generics\StarterDotNet.Generics.csproj", "{E0556FEC-31A2-49C4-A6D4-A1CED05B7C9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarterDotNet.Extensions", "src\StarterDotNet.Extensions\StarterDotNet.Extensions.csproj", "{ED28E99F-025A-4583-8472-ACCB906D6255}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StarterDotNet.Extensions", "src\StarterDotNet.Extensions\StarterDotNet.Extensions.csproj", "{ED28E99F-025A-4583-8472-ACCB906D6255}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

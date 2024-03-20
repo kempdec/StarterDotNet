@@ -8,7 +8,6 @@
     <RootNamespace>KempDec.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <Title>StarterDotNet Generics</Title>
-    <Version>0.6.0</Version>
     <Authors>KempDec</Authors>
     <Company>KempDec Brasil Ltda.</Company>
     <Product>StarterDotNet Generics</Product>
@@ -18,7 +17,7 @@
     <RepositoryUrl>https://github.com/kempdec/StarterDotNet</RepositoryUrl>
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <RepositoryType>GIT</RepositoryType>
+    <RepositoryType>git</RepositoryType>
     <PackageTags>c-sharp;utilities;dotnet;utils</PackageTags>
     <PackageOutputPath>..\..\published</PackageOutputPath>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>

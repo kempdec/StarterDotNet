@@ -6,7 +6,6 @@
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <Title>StarterDotNet Identity</Title>
-    <Version>0.10.0</Version>
     <Authors>KempDec</Authors>
     <Company>KempDec Brasil Ltda.</Company>
     <Product>StarterDotNet Identity</Product>
@@ -16,16 +15,20 @@
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/kempdec/StarterDotNet</RepositoryUrl>
-    <RepositoryType>GIT</RepositoryType>
+    <RepositoryType>git</RepositoryType>
     <PackageTags>c-sharp;utilities;dotnet;utils</PackageTags>
     <PackageOutputPath>..\..\published</PackageOutputPath>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RootNamespace>KempDec.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
     <AssemblyName>KempDec.$(MSBuildProjectName)</AssemblyName>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="..\..\icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\LICENSE">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>

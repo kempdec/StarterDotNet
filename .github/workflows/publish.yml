@@ -1,0 +1,73 @@
+name: Publicar
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "src/**"
+
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "version: A versão do release a ser criado."
+        required: false
+
+      branch:
+        description: "branch: O branch do repositório do release a ser criado."
+        required: false
+
+      pre-release:
+        description: "pre-release: Um sinalizador indicando se o release é um pre-release."
+        type: boolean
+        required: false
+
+jobs:
+  release:
+    name: Criar release
+    runs-on: ubuntu-latest
+    permissions: write-all
+
+    outputs:
+      version: ${{ steps.release.outputs.output }}
+
+    steps:
+      - name: Criar release
+        id: release
+        uses: kempdec/autorelease-action@v2
+        env:
+          AutoRelease_Token: ${{ secrets.GITHUB_TOKEN }}
+          AutoRelease_Branch: ${{ github.event.inputs.branch }}
+          AutoRelease_CreateCommand__Version: ${{ github.event.inputs.version }}
+          AutoRelease_CreateCommand__PreRelease: ${{ github.event.inputs.pre-release }}
+          AutoRelease_CreateCommand__OutputType: "Version"
+
+  publish:
+    name: Publicar pacote
+    needs: release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.x
+
+      - name: Restaurar dependências
+        run: dotnet restore
+
+      - name: Gerar pacote
+        run: dotnet pack -p:PackageVersion=${{ needs.release.outputs.version }}
+
+      - name: Carregar o pacote no NuGet
+        run: |
+          cd published/
+          dotnet nuget push *.nupkg --api-key ${{ secrets.NUGET_TOKEN }} --source "https://api.nuget.org/v3/index.json" --skip-duplicate
+
+      - name: Carregar o pacote no GitHub
+        run: |
+          cd published/
+          dotnet nuget push *.nupkg --api-key ${{ secrets.PACKAGE_TOKEN }} --source "https://nuget.pkg.github.com/kempdec/index.json" --skip-duplicate
