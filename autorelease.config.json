@@ -1,19 +1,19 @@
 {
-  // As configurações do subcomando de criação automática de um release.
+  // As configuraÃ§Ãµes do subcomando de criaÃ§Ã£o automÃ¡tica de um release.
   "CreateCommand": {
     // O nome do projeto.
     "ProjectName": "StarterDotNet",
 
     // Os tipos das mensagens de commit.
     "Types": [
-      "feat=Novidades desta versão",
-      "fix=Principais correções desta versão",
-      "chore=Notas técnicas",
-      "docs=Documentação",
-      "refactor=Refatorações"
+      "feat=Novidades desta versÃ£o",
+      "fix=Principais correÃ§Ãµes desta versÃ£o",
+      "chore=Notas tÃ©cnicas",
+      "docs=DocumentaÃ§Ã£o",
+      "refactor=RefatoraÃ§Ãµes"
     ],
 
-    // As substituições do início das mensagens de commit.
+    // As substituiÃ§Ãµes do inÃ­cio das mensagens de commit.
     "Replaces": {
       // Adicionar.
       "Adicionar": "Foi adicionado",
@@ -72,7 +72,7 @@
       "Aprimorar as ": "Foram aprimoradas as "
     },
 
-    // Os inícios das mensagens de commit que serão ignoradas.
+    // Os inÃ­cios das mensagens de commit que serÃ£o ignoradas.
     "Ignores": [
       "Refatorar.",
       "Merge"
