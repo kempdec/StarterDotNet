@@ -18,8 +18,10 @@ public record AppSettingsBase<T> where T : new()
     /// </summary>
     /// <param name="fileName">O nome do arquivo de configuração JSON.</param>
     /// <param name="optional">Um sinalizador indicando se o arquivo de configuração é opcional.</param>
+    /// <param name="environmentVariablePrefix">O prefixo com o qual os nomes das variáveis de ambiente devem começar.
+    /// O prefixo será removido dos nomes das variáveis de ambiente.</param>
     /// <returns>A instância da associação recursiva das configurações do aplicativo.</returns>
-    protected static T GetInstance(string fileName, bool optional = false)
+    protected static T GetInstance(string fileName, bool optional = false, string? environmentVariablePrefix = null)
     {
         if (fileName.Contains(ConfigFileExtension))
         {
@@ -34,7 +36,7 @@ public record AppSettingsBase<T> where T : new()
         IConfigurationRoot configuration = new ConfigurationBuilder()
             .AddJsonFile(configPath, optional)
             .AddJsonFile(envConfigPath, optional: true)
-            .AddEnvironmentVariables()
+            .AddEnvironmentVariables(environmentVariablePrefix)
             .Build();
 
         return configuration.Get<T>() ?? new T();
